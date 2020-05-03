@@ -186,13 +186,6 @@
       </div>
           <div class="modal-body">
               <div class="card-body">
-                <?PHP 
-                if (isset($_POST[''])) {
-                  # code...
-                }
-                
-                ?>
-                
                   <div class="form-group" >
                     <label for="project_title"><b>Name</b></label>
                     <p><?PHP echo $row['name'];?></p>

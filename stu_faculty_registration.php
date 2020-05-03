@@ -130,9 +130,9 @@ $expireAfter =5;
 
 
                            <div class="form-group">
-                            <a href="#"  id="already_member" style="color:#1565c0;text-decoration:none;">
+                            <!--<a href="#"  id="already_member" style="color:#1565c0;text-decoration:none;">
                                 <b><i class="fa fa-dot-circle-o">&nbsp</i><u> I am already member</u></b>
-                            </a>
+                            </a>-->
                                 <!--<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span>
                                 <span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>-->
@@ -158,7 +158,7 @@ $expireAfter =5;
 <?php
 
    //-------------- register --------------
-    if(isset($_POST['signup'])){
+if(isset($_POST['signup'])){
         $vcode = $_POST['code'];
          
 if( $vcode == $code) {
@@ -172,23 +172,28 @@ if( $vcode == $code) {
             $section = $_POST['section'];
         }else{
             $section = "faculty";
-        }    
-
-        $query = "INSERT INTO `user_details` (`name`, `id_number`, `phone`,`email`, `password`,`login_type`, `branch`, `section`) VALUES ('$name','$user_name','$phone','$mail','$password','$login_type','$branch','$section')";
-        $sql= mysqli_query($connect,$query);
-        if($sql){
-            echo "<script>alert('Registration successfull ')</script>";
-            echo "<script>window.location='index.php';</script>";
-
-        }else{
-            echo "<script>alert('Registration Faild try again ')</script>";
-            echo "<script>window.location='index.php';</script>";
         }
-              }
-        
+
+            if($name !=' ' && $user_name !=' ' && $phone !=' ' && $password !=' ' && $login_type !=' ' && $branch !=' ' && $section !=' '  ){ 
+                    
+                            $query = "INSERT INTO `user_details` (`name`, `id_number`, `phone`,`email`, `password`,`login_type`, `branch`, `section`) VALUES ('$name','$user_name','$phone','$mail','$password','$login_type','$branch','$section')";
+                            $sql= mysqli_query($connect,$query);
+                            if($sql){
+                                echo "<script>alert('Registration successfull ')</script>";
+                                echo "<script>window.location='index.php';</script>";
+
+                            }else{
+                                echo "<script>alert('Registration Faild try again ')</script>";
+                                echo "<script>window.location='index.php';</script>";
+                            }
+            }else {
+                    echo "<script>alert('All fields must be filled')</script>";
+                // echo "<script>window.location='index.php';</script>";
+            }
+        }
 else {
             echo "<script>alert('In valid Verification Code. Try Again')</script>";
-            echo "<script>window.location='index.php';</script>";
+           // echo "<script>window.location='index.php';</script>";
         }
         
     }
