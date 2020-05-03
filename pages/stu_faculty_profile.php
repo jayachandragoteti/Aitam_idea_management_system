@@ -36,29 +36,21 @@
                     <label for="project_title"><b>Login Type</b></label>
                     <p><?PHP echo $row['login_type'];?></p>
                   </div>
+                  <div class='form-group'>
+                            <label for='project_title'><b>Branch </b></label>
+                            <p><?PHP echo $row['branch'];?></p>
+                            </div>
                   <?PHP
                   //-----------------------Branch section update-------------------------------------
                   if( $row['login_type'] =="student"){
                       echo"
-                            <div class='form-group'>
-                            <label for='project_title'><b>Branch </b></label>
-                            <p>".$row['branch']."</p>
-                            </div>
+                     
                             <div class='form-group'>
                             <label for='project_title'><b> Section </b></label>
                             <p>".$row['section']."</p>
                             </div>
                       ";
                   }
-
-
-                        if( $row['login_type'] =="student"){
-                          if ($row['branch']=="" || $row['section']=="") {
-                            echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#branch_section">
-                            Select Branch and Section
-                          </button>';
-                          }
-                        }
                     ?>
                     
                   <form class="forms-sample">
@@ -91,46 +83,6 @@
       <!-- page-body-wrapper ends -->
     </div>
 <!--===========================================================================-->
-<!-- branch & section update Modal -->
-<div class="modal fade" id="branch_section" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Select Branch and Section</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form method="POST" action="<?php echo $_SERVER["PHP_SELF"];?>">
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="branch">Branch</label>
-                        <select name="branch" class="form-control" id="branch" aria-describedby="emailHelp" placeholder="Enter email">
-                            <option value="CSE">CSE</option>
-                            <option value="ECE">ECE</option>
-                            <option value="IT">IT</option>
-                            <option value="MECH">MECH</option>
-                            <option value="CIVIL">CIVIL</option>
-                            <option value="EEE">EEE</option>
-                        </select>
-                </div>
-                <div class="form-group">
-                    <label for="section">Section</label>
-                        <select name="section" class="form-control" id="section" aria-describedby="emailHelp" placeholder="Enter email">
-                            <option value="A">A Section</option>
-                            <option value="B">B Section</option>
-                            <option value="C">C Section</option>
-                        </select>
-                </div>      
-            </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <input type="submit" name="save_branch_section" id="save_branch_section" class="btn btn-primary" value="Save Changes"/>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 <!-----------------------------------------------Profile Edit ------------------------------------ -->
 <div class="modal fade" id="profile_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -173,20 +125,6 @@
         include "db_connection.php";
         $user=$_SESSION['user_name'];
         //$user="18A51A0515";
-        //---------------Profile Edit -------------------------
-        if(isset($_POST['save_branch_section'])){
-            $branch = $_POST['branch'];
-            $section = $_POST['section'];
-
-            $update="UPDATE `user_details` SET `branch`='$branch',`section`= '$section' WHERE `id_number` = '$user'";
-            $sqlupdate= mysqli_query($connect,$update);
-            if ($sqlupdate) {
-                echo "<script>alert('Branch and Section are Updated ')</script>";
-            }else{
-                echo "<script>alert('Update Faild ')</script>";
-            }
-
-        }
         //---------------profele update------------------
         /*if(isset($_POST['profile_edit'])){
             $name = $_POST['name'];

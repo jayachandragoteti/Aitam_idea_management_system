@@ -22,7 +22,7 @@ session_start();
      # echo "<script>window.location=' stu_faculty_profile.php';</script>";
   }
 
-
+z
 
 
 ?>

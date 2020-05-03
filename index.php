@@ -30,7 +30,7 @@
 <!--===========================================================================-->
     <div class="main" style="background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%)">
         <!--========= login ==============-->
-        <section class="sign-in" >
+        <section class="sign-in" id="main_section" >
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
@@ -71,22 +71,19 @@
                     <div class="signup-form" style="">
                         <h2 class="form-title">Enter Your Mail</h2>
                         <h5><i class="fa fa-dot-circle-o"></i> &nbsp Verification Code will send to your Mali</h5>
-                        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"];?>" class="register-form" id="register-form">
+                        <form method="POST"  action="<?php echo $_SERVER["PHP_SELF"];?>" class="register-form" id="register_form">
                            
                             <div class="form-group">
                                 <label for="email"><i class="fa fa-envelope"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email" required/>
                             </div>
                            <div class="form-group">
-                            <a href="#"  id="mail" style="color:#1565c0;text-decoration:none;">
-                                <b><i class="fa fa-dot-circle-o">&nbsp</i><u> I am already member</u></b>
-                            </a>
-                                <!--<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span>
-                                <span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>-->
+                                <a href="#"  id="mail" style="color:#1565c0;text-decoration:none;">
+                                    <b><i class="fa fa-dot-circle-o">&nbsp</i><u> I am already member</u></b>
+                                </a>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="mail"  id="mail" class="form-submit" value="Send"/>
+                                <input type="submit" name="mail_submit"  id="mail_submit" class="form-submit" value="Send"/>
                             </div>
                         </form>
                         </div>
@@ -101,49 +98,12 @@
         </div>
 <!--===========================================================================-->
 <?php
-    //---------------- login ---------------
-  /*  if(isset($_POST['login']) && isset($_POST['user_name'])){
-        $user_name = $_POST['user_name'];
-        $password = $_POST['user_pass'];
-        
-        $_SESSION['user_name']=$user_name;
-        
-        $sql="SELECT *  FROM `user_details` WHERE  `id_number` = '$user_name' AND `password` = '$password'";
-        $result = mysqli_query($connect,$sql);
-        $row = mysqli_fetch_array($result);
-
-        if ($row) {
-            
-
-            if ($row['login_type'] == "student" || $row['login_type'] == "faculty" ) {
-                
-                 header("Location: stu_faculty_main_dashboard.php");
-
-            } elseif ($row['login_type']=="department_admin") {
-                echo "<script>alert('successfully logged in.')</script>";
-
-            } elseif ($row['login_type']=="central_committee") {
-                echo "<script>alert('successfully logged in.')</script>";
-
-            }else {
-                echo "<script>alert('Login faild Try again')</script>";
-               # echo "<script>window.location='index.php';</script>";
-                
-            }
-        } else {
-            echo "<script>alert('Login faild Try again ')</script>";
-           # echo "<script>window.location='index.php';</script>";
-        }
-        
-    }*/
-    //---------------- /login ---------------
-    //---------------- /mail ---------------
-    if(isset($_POST['mail'])){
+   //---------------- /mail ---------------
+    if(isset($_POST['mail_submit']))
+    {
         $email = $_POST['email'];
         $code="AIM".rand(1000,100000);
-        # $_SESSION['code']=$code;$_SESSION['mail']=$email;
-        
-            
+        $_SESSION['code']=$code;$_SESSION['mail']=$email;
                        // -------------------Sending email------------
                         if ($email!="") {
                             $to1 = $email;
@@ -172,9 +132,6 @@
                             $body .= "</div>";
                             $body .= "</center>";
                             $body .= "</body></html>";
-
-                            
-                            
                                 if (mail($to1, $subject1, $body,$headers)) {
                                     $_SESSION['code']=$code;
                                     $_SESSION['mail']=$email;
@@ -182,12 +139,10 @@
                                     echo "<script>window.location='stu_faculty_registration.php';</script>";
                                 }else {
                                     echo "<script>alert('Request failed try again')</script>";
-                                   echo "<script>window.location='index.php';</script>";
+                                   // echo "<script>window.location='index.php';</script>";
                                 }
-                               #  echo "<script>window.location='stu_faculty_registration.php';</script>";
+                                 echo "<script>window.location='stu_faculty_registration.php';</script>";
                         }
-                        
-                            // --------------
 
     }
     //---------------- /mail ---------------
@@ -205,20 +160,7 @@ $("#mail").click(function(){
     $(".mail").hide();
     $(".sign-in").show();
   });
-//-------------confirm_password-----------------
-var password = document.getElementById("password")
-  , confirm_password = document.getElementById("confirm_password");
-
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-//------------------------------
+//-----------------------------
 });      
 </script>
 <!--===========================================================================-->   

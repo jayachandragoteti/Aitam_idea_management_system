@@ -60,7 +60,7 @@ $expireAfter =5;
         <!--==================================== Register =====================================-->
         <section class="signup" style="" >
             <div class="container">
-                <div class="signup-content" >
+                <div class="signup-content" ><?PHP echo $code;?>
                     <div class="signup-form" style="margin-top:-8%;">
                         <h2 class="form-title">Register</h2>
                         <h5><i class="fa fa-dot-circle-o"></i> &nbsp <?PHP echo $mail;?>: Your Id Number is Your User Name</h5>
@@ -83,9 +83,42 @@ $expireAfter =5;
                             </div>
                             <div class="form-group" style="display:flex;">
                                 <label for="login_type"></label>
-                                <input type="radio" name="login_type" value="student" class="agree-term">Student
-                                <input type="radio" name="login_type" value="faculty" class="agree-term">Faculty
+                                <input type="radio" name="login_type" id="student" value="student" class="agree-term">Student
+                                <input type="radio" name="login_type" id="faculty" value="faculty" class="agree-term">Faculty
                             </div>
+                                        <div id="student_branch_section" style="display:none;">
+                                            <div class="form-group">
+                                                <label for="branch"></label>
+                                                <input type="radio" name="branch" value="CSE" class="agree-term">CSE
+                                                <input type="radio" name="branch" value="ECE" class="agree-term">ECE
+                                                <input type="radio" name="branch" value="IT" class="agree-term">IT
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="radio"  name="branch" value="EEE" class="agree-term">EEE
+                                                <input type="radio" name="branch" value="CIVIL" class="agree-term">CIVIL
+                                                <input type="radio" name="branch" value="MECH" class="agree-term">MECH
+                                            </div>   
+                                            <div class="form-group">
+                                                <label for="re-pass"></label>
+                                                <input type="radio" name="section" value="A" class="agree-term">A SECTION
+                                                <input type="radio" name="section" value="B" class="agree-term">B SECTION
+                                                <input type="radio" name="section" value="C" class="agree-term">C SECTION
+                                            </div>
+                                        </div>  
+                                        <div id="fac_branch" style="display:none;">
+                                            <div class="form-group">
+                                                <label for="branch"></label>
+                                                <input type="radio" name="branch" value="CSE" class="agree-term">CSE
+                                                <input type="radio" name="branch" value="ECE" class="agree-term">ECE
+                                                <input type="radio" name="branch" value="IT" class="agree-term">IT
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="radio"  name="branch" value="EEE" class="agree-term">EEE
+                                                <input type="radio" name="branch" value="CIVIL" class="agree-term">CIVIL
+                                                <input type="radio" name="branch" value="MECH" class="agree-term">MECH
+                                                <input type="radio" name="branch" value="BS" class="agree-term">BS
+                                            </div>   
+                                        </div>      
                             <div class="form-group">
                                 <label for="password"><i class="fa fa-lock"></i></label>
                                 <input type="password" name="password" id="password" pattern=".{8,}" placeholder="Password 8 characters minimum" required/>
@@ -128,15 +161,20 @@ $expireAfter =5;
     if(isset($_POST['signup'])){
         $vcode = $_POST['code'];
          
-if ( $vcode == $code) {
+if( $vcode == $code) {
         $name = $_POST['name'];
         $user_name = $_POST['user_name'];
         $phone = $_POST['phone'];
         $password = $_POST['password'];
         $login_type = $_POST['login_type'];
-    
+        $branch = $_POST['branch'];
+        if($login_type=="student"){
+            $section = $_POST['section'];
+        }else{
+            $section = "faculty";
+        }    
 
-        $query = "INSERT INTO `user_details` (`name`, `id_number`, `phone`,`email`, `password`,`login_type`) VALUES ('$name','$user_name','$phone','$mail','$password','$login_type')";
+        $query = "INSERT INTO `user_details` (`name`, `id_number`, `phone`,`email`, `password`,`login_type`, `branch`, `section`) VALUES ('$name','$user_name','$phone','$mail','$password','$login_type','$branch','$section')";
         $sql= mysqli_query($connect,$query);
         if($sql){
             echo "<script>alert('Registration successfull ')</script>";
@@ -157,7 +195,23 @@ else {
     //-------------- / register --------------
 ?>
 <script>
+$(document).ready(function(){
 
+   $("#student").click(function(){
+    $("#student_branch_section").show();
+    $("#fac_branch").hide();
+            
+   });
+   $("#faculty").click(function(){
+        $("#student_branch_section").hide();
+        $("#fac_branch").show();
+
+            
+   });
+
+
+
+});
 </script>
 <!--===========================================================================-->   
 </body>
