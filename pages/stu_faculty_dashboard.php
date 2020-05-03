@@ -5,9 +5,8 @@
   {header('location:index.php');}
   $user=$_SESSION['user_name'];
 ?>
-<div class="row">
-              <div class="col-md-4 grid-margin stretch-card"></div>
-            <div class="col-md-4 grid-margin stretch-card" id="main_dashboard">
+
+            <div class="col-lg-12 grid-margin stretch-card"id="main_dashboard">
                 <div class="card">
                   <div class="card-body">
                     <h1 class="card-title">Your Proposals</h1>
@@ -62,8 +61,6 @@
                       </div>
                   </div>
                 </div>
-              </div>
-      <div class="col-md-4 grid-margin stretch-card"></div>
   </div>  
 <!--===========================================================================-->     
 <!---------------- view data-------------->
