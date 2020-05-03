@@ -53,7 +53,13 @@
                             <div class="form-group">
                                 <a href="#" id="register" style="color:#1565c0;text-decoration:none;">
                                     <b><i class="fa fa-dot-circle-o">&nbsp</i><u>Register </u></b>
+                                </a>&nbsp
+                                <a href="#" id="forgot_pass" style="color:#1565c0;text-decoration:none;">
+                                    <b><i class="fa fa-dot-circle-o">&nbsp</i><u>forgot password </u></b>
                                 </a>
+                            </div> 
+                            <div class="form-group">
+                                
                             </div>    
                             <div class="form-group form-button">
                                 <input type="submit" name="login" id="login" class="form-submit" value="Login"/>
@@ -95,10 +101,41 @@
             </div>
          </section>
          <!--========= /Mail ==============-->
+         <!--========= forgot_password ==============-->
+        <section class="forgot_password" style="display:none;" >
+            <div class="container">
+                <div class="signup-content" >
+                    <div class="signup-form" style="">
+                        <h2 class="form-title">Forgot Password</h2>
+                        <h5><i class="fa fa-dot-circle-o"></i> &nbsp Verification Code will send to your Registered Mali</h5>
+                        <form method="POST"  action="forgot_pass_data.php" class="register-form" id="register_form">
+                           
+                            <div class="form-group">
+                                <label for="user_name"><i class="fa fa fa-vcard"></i></label>
+                                <input type="text" name="user_name" id="user_name" placeholder="Enter your User Name" required/>
+                            </div>
+                           <div class="form-group">
+                                <a href="#"  id="forgot" style="color:#1565c0;text-decoration:none;">
+                                    <b><i class="fa fa-dot-circle-o">&nbsp</i><u>login</u></b>
+                                </a>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="forgot_password_submit"  id="forgot_password_submit" class="form-submit" value="Send"/>
+                            </div>
+                        </form>
+                        </div>
+                    <div class="signup-image">
+                        <figure><img src="assets/images/logo.jpg" alt="sing up image"></figure>
+                        <h3 class="signup-image-link"> AIM SYSTEM</h3>
+                    </div>
+                </div>
+            </div>
+         </section>
+         <!--========= /forgot_password ==============-->
         </div>
 <!--===========================================================================-->
 <?php
-   //---------------- /mail ---------------
+   //---------------- mail ---------------
     if(isset($_POST['mail_submit']))
     {
         $email = $_POST['email'];
@@ -145,7 +182,7 @@
                         }
 
     }
-    //---------------- /mail ---------------
+   
 ?> 
 <!--===========================================================================-->
 <script>
@@ -158,6 +195,16 @@ $(document).ready(function(){
 //-----------------------------
 $("#mail").click(function(){
     $(".mail").hide();
+    $(".sign-in").show();
+  });
+//-----------------------------
+$("#forgot_pass").click(function(){
+    $(".sign-in").hide();
+    $(".forgot_password").show();
+  });
+//-----------------------------
+$("#forgot").click(function(){
+    $(".forgot_password").hide();
     $(".sign-in").show();
   });
 //-----------------------------
