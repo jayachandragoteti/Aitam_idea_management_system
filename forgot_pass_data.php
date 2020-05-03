@@ -46,7 +46,7 @@ if(isset($_POST['forgot_password_submit']))
                                 echo "<script>alert('Verification Code will send to your Mali')</script>";
                                 echo "<script>window.location='stu_faculty_forgot_password.php';</script>";
                             }else {
-                                echo "<script>alert('Password changed successfully')</script>";
+                                echo "<script>alert('Request faild try again')</script>";
                                // echo "<script>window.location='index.php';</script>";
                             }
                              echo "<script>window.location='stu_faculty_forgot_password.php';</script>";

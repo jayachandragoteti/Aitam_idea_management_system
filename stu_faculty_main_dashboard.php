@@ -109,6 +109,12 @@
                 <span class="menu-title">Profile</span>
               </a>
             </li>
+            <li class="nav-item " id="change_pass">
+              <a class="nav-link " href="#">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">Change Password</span>
+              </a>
+            </li>
           </ul>
         </nav>
         <!--===========================================================================-->
@@ -248,7 +254,7 @@ $(document).ready(function(){
           $("#main_section").html(result);
          // final=result;
           $("#Dashboard").addClass("active");
-          $("#Project_Proposal,#Profile").removeClass("active");
+          $("#Project_Proposal,#Profile,#change_pass").removeClass("active");
       }
     });
       if (final == code2) {
@@ -268,7 +274,7 @@ $(document).ready(function(){
       {
           $("#main_section").html(result);
           $("#Project_Proposal").addClass("active");
-          $("#Dashboard,#Profile").removeClass("active");
+          $("#Dashboard,#Profile,#change_pass").removeClass("active");
       }
     });
   });
@@ -281,7 +287,21 @@ $(document).ready(function(){
       {
           $("#main_section").html(result);
           $("#Profile").addClass("active");
-          $("#Project_Proposal,#Dashboard").removeClass("active");
+          $("#Project_Proposal,#Dashboard,#change_pass").removeClass("active");
+      }
+    });
+  });
+  //--------------------------
+    //--------------------------
+    $("#change_pass").click(function()
+  {
+    $.ajax({
+      url: "pages/stu_faculty_change_password.php",
+      success: function(result)
+      {
+          $("#main_section").html(result);
+          $("#change_pass").addClass("active");
+          $("#Project_Proposal,#Dashboard,#Profile").removeClass("active");
       }
     });
   });

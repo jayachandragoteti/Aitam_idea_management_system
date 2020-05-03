@@ -209,12 +209,20 @@ $(document).ready(function(){
    });
    $("#faculty").click(function(){
         $("#student_branch_section").hide();
-        $("#fac_branch").show();
-
-            
+        $("#fac_branch").show();    
    });
 
-
+   $(function () {
+        $("#signup").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
 
 });
 </script>

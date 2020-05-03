@@ -5,8 +5,9 @@
   {header('location:index.php');}
   $user=$_SESSION['user_name'];
 ?>
-
-            <div class="col-lg-12 grid-margin stretch-card" id="main_dashboard">
+<div class="row">
+              <div class="col-md-4 grid-margin stretch-card"></div>
+            <div class="col-md-4 grid-margin stretch-card" id="main_dashboard">
                 <div class="card">
                   <div class="card-body">
                     <h1 class="card-title">Your Proposals</h1>
@@ -62,6 +63,8 @@
                   </div>
                 </div>
               </div>
+      <div class="col-md-4 grid-margin stretch-card"></div>
+  </div>  
 <!--===========================================================================-->     
 <!---------------- view data-------------->
 <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">

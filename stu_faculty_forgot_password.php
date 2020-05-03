@@ -40,7 +40,7 @@ $expireAfter =5;
     <!--===========================================================================-->
     <link rel="shortcut icon" href="assets/images/logo.jpg" />
     <!--===========================================================================-->
-    <title>Register</title>
+    <title>Change</title>
     <!--=============================Font Icon ==================================-->
     <link rel="stylesheet" href="assets/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/iconfonts/ionicons/css/ionicons.css">
@@ -118,11 +118,11 @@ if( $vvcode == $code && $re_pass == $password ) {
                      $query = "UPDATE `user_details` SET `password`='$re_pass' WHERE `id_number`='$user' AND `email`='$mail' ";
                             $sql= mysqli_query($connect,$query);
                             if($sql){
-                                echo "<script>alert('Registration successfull ')</script>";
+                                echo "<script>alert('Password changed successfully')</script>";
                                 echo "<script>window.location='index.php';</script>";
 
                             }else{
-                                echo "<script>alert('Registration Faild try again ')</script>";
+                                echo "<script>alert(' Faild try again ')</script>";
                                 echo "<script>window.location='index.php';</script>";
                             }
         
@@ -139,19 +139,25 @@ $(document).ready(function(){
 
    $("#student").click(function(){
     $("#student_branch_section").show();
-    $("#fac_branch").hide();
-            
+    $("#fac_branch").hide();        
    });
    $("#faculty").click(function(){
         $("#student_branch_section").hide();
-        $("#fac_branch").show();
-
-            
+        $("#fac_branch").show();       
    });
-
-
-
 });
+
+$(function () {
+        $("#signup").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
 </script>
 <!--===========================================================================-->   
 </body>

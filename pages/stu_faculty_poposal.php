@@ -6,8 +6,10 @@
    $user=$_SESSION['user_name'];
 ?>
   <!--========================================================================================--> 
-          <div class="col-lg-12 grid-margin stretch-card" id="" >
-            <div class="card" style="display: flex;justify-content:center;">
+  <div class="row">
+        <div class="col-md-4 grid-margin stretch-card"></div>       
+          <div class="col-md-4 grid-margin stretch-card" id="" >
+            <div class="card" >
               <div class="card-body">
                 <h4 class="card-title"><b>Project Proposal </b></h4>
                 <form method="POST" id="project_proposal"  class="forms-sample" enctype="multipart/form-data">
@@ -27,13 +29,14 @@
                     <label for="project_description">Project Description</label>
                     <textarea name="project_description" class="form-control" id="project_description" rows="2" placeholder="Description in 3-4 lines" required></textarea>
                   </div>
-                  <input type="submit" class="btn btn-success mr-2" name="proposal" id="proposal" class="form-submit" value="Submit"/>
+                  <input type="submit" class="btn btn-primary" name="proposal" id="proposal" class="form-submit" value="Submit"/>
                 </form>
               </div>
               <div id="response"></div> 
             </div>
           </div>     
-
+        <div class="col-md-4 grid-margin stretch-card"></div>
+    </div>
  <script>
  $(document).ready(function(){  
       $('#proposal').click(function(){  

@@ -10,8 +10,9 @@
         $row = mysqli_fetch_array($result);
 ?>
 <!--========================================================================================--> 
-
-          <div class="col-lg-12 grid-margin stretch-card"style="display: flex;justify-content:center;" id="profile">
+<div class="row">
+    <div class="col-md-4 grid-margin stretch-card"></div>
+          <div class="col-md-4 grid-margin stretch-card" id="profile">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title"><b>Your Profile</b></h4>
@@ -64,24 +65,8 @@
           </div>
 <!--========================================================================================--> 
 </section>
-          </div>
-          <!-- content-wrapper ends -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">
-                Design and developed by <a href="#" >AITAM</a> Web developers club.
-              </span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-                <a href="#" >AITAM SAC</a> 
-              </span>
-            </div>
-          </footer>
-          <!-------------------/ partial --------------------------------------->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
+  <div class="col-md-4 grid-margin stretch-card"></div>
+</div>
 <!--===========================================================================-->
 <!-----------------------------------------------Profile Edit ------------------------------------ -->
 <div class="modal fade" id="profile_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
